@@ -1,0 +1,51 @@
+<div class="container">
+    <div class="card border-0 shadow my-5">
+        <div class="card-body p-5 align-items-center align-middle ">
+            <div id="titulo" class="pb-3">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h1 class="my-0">Reseñas de Peliculas</h1>
+                    </div>
+                    <div class="col-md-6 text-right pt-2">
+                        <a [routerLink]="['/crud/new']" class="btn btn-outline-secondary ml-auto">Nueva Reseña</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mt-4">
+
+
+                <div class="col-md-12" *ngIf="!peliculas">
+                    <div class="mx-auto my-auto align-items-center" style="width: 80px;">
+                        <img height="80px" src="assets/images/loading.gif" />
+                    </div>
+                </div>
+
+                <div class="loading" *ngIf="peliculas && peliculas.length ==0">
+                    No hay reseñas para mostrar, intentalo de nuevo más tarde :)
+                </div>
+
+                <div *ngFor="let pelicula of peliculas" class="col-md-4 mx-auto">
+                    <div class="w-75 h-50 overflow-hidden mx-auto" *ngIf="pelicula.src; else elseBlock">
+                        <img class="img-fluid mx-auto" src="{{ pelicula.src }}" alt="{{pelicula.title}}" />
+                    </div>
+            
+                    <ng-template #elseBlock>
+                        <div  class="w-75 h-50 overflow-hidden mx-auto">
+                            <img class="img-fluid mx-auto" src="assets/images/default.jpg" alt="{{pelicula.title}}" />
+                        </div>
+                    </ng-template>
+
+                    <h3 class="text-center">{{pelicula.title}}</h3>
+                    <p class="text-center">{{pelicula.year}}</p>
+                    <p class="text-center"><a [routerLink]="['/crud/detail/',pelicula._id]">Leer reseña</a></p>
+                </div>
+                <div *ngIf="rows>0 && rows===1 else elseBlock" class="col-md-4 mx-auto "> </div>
+                <ng-template #elseBlock>
+                    <div class="col-md-4 mx-auto"> </div>
+                    <div class="col-md-4 mx-auto"> </div>
+                </ng-template>
+            </div>
+        </div>
+    </div>
+</div>

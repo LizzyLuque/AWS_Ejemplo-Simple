@@ -1,0 +1,85 @@
+<div class="container">
+
+    <div class="card border-0 shadow my-5">
+        <div class="card-body p-5 align-items-center align-middle ">
+            <h3 class="mx-auto text-center">{{titulo}}</h3>
+            <div class="row">
+                <div class="col-md-6 mx-auto">
+                    <form #peliculaForm="ngForm" (ngSubmit)="onSubmit(peliculaForm)" class="md-form">
+                        <div class="form-group">
+                            <label for="title">Titulo </label>
+                            <input class="form-control" type="text" name="title" #title="ngModel"
+                                [(ngModel)]="pelicula.title" required />
+                            <span class="alert alert-danger" *ngIf="title.touched && !title.valid">
+                                El titulo es obligatorio
+                            </span>
+                        </div>
+                        <div class="form-group">
+                            <label for="year">Año de Lanzamiento</label>
+                            <input class="form-control" type="number" name="year" #year="ngModel"
+                                [(ngModel)]="pelicula.year" required />
+                            <span class="alert alert-danger" *ngIf="year.touched && !year.valid">
+                                El año es obligatorio
+                            </span>
+                        </div>
+                        <div class="form-group">
+                            <label for="review">Reseña</label>
+                            <textarea class="form-control" name="review" #review="ngModel" [(ngModel)]="pelicula.review"
+                                required></textarea>
+                            <span class="alert alert-danger" *ngIf="review.touched && !review.valid">
+                                La reseña es obligatoria
+                            </span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="image">Imagen de la Pelicula</label>
+                            <span class="image" *ngIf="fileThumb" style="float:none;">
+                                <br>
+                                <img [src]="fileThumb" style="width:100px;" />
+                                <br>
+                            </span>
+                        </div>                            
+
+
+                        <div class="custom-file" id="customFile">                           
+                            <input type="file" accept='image/jpeg' type="file" name="image"
+                                            placeholder="Subir Imagen" (change)='fileChangeEvent($event)'
+                                            class="custom-file-input" aria-describedby="fileHelp" >
+                            <label class="custom-file-label" for="exampleInputFile">
+                                Seleccionar Archivo    (Solo se aceptan archivos: .jpg |.jpeg)
+                            </label>
+                        </div>                     
+                            
+                        <br>
+                        <br>
+                        <input class="btn btn-outline-secondary" type="submit" value="Guardar" />
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<button id="openModalButton" [hidden]="true" data-toggle="modal" data-target=".bd-example-modal-sm">Open Modal</button>
+<!-- Modal -->
+<div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm modal-dialog-centered">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h4 class="modal-title" id="mySmallModalLabel">Éxito</h4>
+            <button type="button" class="close" (click)="redirige()" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            La reseña fue {{modal}} correctamente.
+          </div>        
+    </div>
+  </div>
+</div>
+
+
+
+
+
+

@@ -1,3 +1,11 @@
 export const environment = {
-  production: true
+  production: true,
+  wsUrl:'*',
+  wsImg: '*',
+  AccessKey:'*',
+  SecretKey: '*',
+  region:'*',
+  bucket:'*',
+  path:'*',
+  endpoint:'*'
 };

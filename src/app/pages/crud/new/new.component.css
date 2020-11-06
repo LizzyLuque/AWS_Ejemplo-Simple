@@ -1,0 +1,7 @@
+.custom-file-input ~ .custom-file-label::after {
+    content: "Elegir";
+}
+
+.custom-file-label{
+    font-size: medium;
+}

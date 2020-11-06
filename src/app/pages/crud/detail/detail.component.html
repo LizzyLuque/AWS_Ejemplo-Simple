@@ -1,0 +1,55 @@
+<div class="container">
+  <div class="card border-0 shadow my-5">
+    <div class="card-body p-5 align-items-center align-middle ">
+
+      <div class="loading" *ngIf="!pelicula">
+        <div class="row align-items-center" style="min-height: 500px;">
+          <div class="col">
+            <div class="mx-auto align-items-center" style="width: 80px;">
+              <img height="80px" src="assets/images/loading.gif" />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div *ngIf="pelicula" class="col-lg-12 mx-auto ">
+        <div class="wrap">
+          <img class="img-fluid mx-auto" src="{{ pelicula.src }}" alt="{{pelicula.title}}" />
+        </div>
+        <h3 class="text-center">{{pelicula.title}} - <small>{{pelicula.year}}</small></h3>
+
+        <p class="text-justify">{{pelicula.review}} - {{pelicula.date | amLocale:'es' | amTimeAgo }} </p>
+        <p class="text-center">
+
+          <a data-toggle="modal" data-target="#exampleModal" class="btn btn-outline-danger">Borrar</a> &nbsp;
+          <a class="btn btn-outline-warning" [routerLink]="['/crud/edit/', pelicula._id]">Editar</a>
+        </p>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<!-- Modal -->
+<div *ngIf="pelicula" class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">¿Estas seguro de eliminar esta reseña?</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Al dar click en el boton de confirmar, la reseña se perderá para siempre
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Cancelar</button>
+        <a type="button" [routerLink]="['/crud/delete/', pelicula._id, pelicula.image]" data-dismiss="modal"
+          class="btn btn-outline-primary">Confirmar </a>
+      </div>
+    </div>
+  </div>
+</div>

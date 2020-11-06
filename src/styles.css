@@ -1,1 +1,80 @@
 /* You can add global styles to this file, and also import other style files */
+/* @import url('https://fonts.googleapis.com/css2?family=Alegreya+Sans:ital,wght@1,300&display=swap'); */
+@import url('https://fonts.googleapis.com/css2?family=Alegreya+Sans:ital,wght@1,300;1,400&display=swap');
+
+body{
+	font-family: 'Alegreya Sans', Arial, Helvetica;
+	font-size: 20px;
+	background: url("assets/images/pattern.jpg");
+    background-attachment: fixed;
+    color: rgb(110, 102, 102);
+}
+
+.bg-light{
+    background-color: #d7cde4 !important;
+}
+
+
+.navbar-light .navbar-nav,
+.active > .nav-link,
+.navbar-brand,
+.active {
+    color: rgba(111, 58, 155, 0.9) !important;
+}
+
+.nav-link:hover{
+    color: rgba(111, 58, 155, 0.9) !important;
+}
+
+.navbar-brand{
+    cursor: default;
+}
+
+#logo {
+    width: 30%;
+    font-size: 29px;
+    /*float: left;*/
+    margin-top: 35px;
+}
+
+#logo img {
+    display: block;
+    /*float: left;*/
+    height: 60px;
+    margin-top: -9px;
+    margin-right: 10px;
+    animation: latir infinite 5s linear;
+}
+
+@keyframes latir {
+    0% {
+        transform: scale(1, 1);
+    }
+
+    50% {
+
+        /*transform: scale(1.02, 1.02);*/
+        transform: scale(0.75, 0.75);
+    }
+
+    55%{
+        transform: scale(0.85, 0.85);
+    }
+
+    100% {
+        transform: scale(1, 1);
+    }
+}
+
+a, a:hover{
+    color: rgb(167, 127, 219);
+}
+.btn-outline-secondary{
+    color: rgb(167, 127, 219);
+    border-color: rgb(167, 127, 219);;
+}
+.btn-outline-secondary:hover{
+    background-color: rgb(167, 127, 219);
+    color: white;
+    border-color: white;
+}
